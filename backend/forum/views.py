@@ -1,32 +1,18 @@
-from rest_framework import serializers
+from rest_framework import viewsets
 from .models import Category, Topic, Post
+from .serializers import CategorySerializer, TopicSerializer, PostSerializer
 
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = '__all__'
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
-class TopicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Topic
-        fields = '__all__'
+class TopicViewSet(viewsets.ModelViewSet):
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
 
 
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Post
-        fields = '__all__'
-
-
-class CategoryViewSet:
-    pass
-
-
-class TopicViewSet:
-    pass
-
-
-class PostViewSet:
-    pass
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
